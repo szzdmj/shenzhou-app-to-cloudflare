@@ -34,9 +34,9 @@
 
  "containers": [
   {
-    "class_name": "MyContainer", // ⬅️ REQUIRED: 绑定 Durable Object
-    "name": "mycontainer",       // ⬅️ REQUIRED: 容器服务名（唯一标识）
-    "service": "shenzhou-app",   // ⬅️ 容器用途（自定义 label）
+    "class_name": "MyContainer",       // Durable Object class
+    "name": "mycontainer",             // 容器名称（推荐小写）
+    "service": "shenzhou-app",         // 任意标识用的名字
     "configuration": {
       "image": "ghcr.io/szzdmj/shenzhou-app:latest"
     },
