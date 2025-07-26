@@ -32,23 +32,20 @@
     "directory": "./src/src"
   },
 
-  "containers": [
+ "containers": [
   {
-    "name": "MY_CONTAINER",
     "class_name": "MyContainer",
     "service": "shenzhou-app",
-    "image": "ghcr.io/szzdmj/shenzhou-app:latest",
-    "entrypoint": {
-      "port": 8080
+    "configuration": {
+      "image": "ghcr.io/szzdmj/shenzhou-app:latest"
     },
     "durable_objects": {
       "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
     },
     "instances": 1,
     "scheduling_policy": "default",
-    "constraints": {
-      "tier": 1
-    }
+    "constraints": { "tier": 1 }
   }
 ]
+
 }
