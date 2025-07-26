@@ -1,25 +1,17 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "hello-containers",
-  "main": "src/index.ts",
+  "name": "shenzhou-app-to-cloudflare",
   "compatibility_date": "2025-07-26",
 
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "afdb066fcc2146c0bab30d8ca805a7fc"
-    }
-  ],
-
+  // 绑定容器镜像
   "containers": [
     {
       "name": "hello-containers",
-      "class_name": "MyContainer",
       "image": "ghcr.io/szzdmj/shenzhou-app:latest",
       "max_instances": 5
     }
   ],
 
+  // 可选绑定环境变量或持久化存储
   "durable_objects": {
     "bindings": [
       {
@@ -29,6 +21,12 @@
     ]
   },
 
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "afdb066fcc2146c0bab30d8ca805a7fc"
+    }
+  ],
   "migrations": [
     {
       "tag": "v1",
