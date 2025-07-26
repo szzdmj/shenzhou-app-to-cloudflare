@@ -1,19 +1,22 @@
-import { Hono } from 'hono';
+import { Hono } from 'hono'
 
 type Env = {
-  MY_CONTAINER: DurableObjectNamespace;
-  KV: KVNamespace;
-};
+  MY_CONTAINER: DurableObjectNamespace
+  KV: KVNamespace
+}
 
-export class MyContainer {} // 可留空
+export class MyContainer {} // 留空：请求将转发到 container
 
-const app = new Hono<{ Bindings: Env }>();
-app.get('/health', (c) => c.text('OK'));
+const app = new Hono<{ Bindings: Env }>()
+
+app.get('/health', (c) => c.text('OK'))
+
 app.all('*', async (c) => {
-  const newRequest = new Request(c.req.raw, { headers: c.req.raw.headers });
-  return await c.env.MY_CONTAINER.fetch(newRequest);
-});
+  // 保持原始请求结构
+  const newRequest = new Request(c.req.raw)
+  return await c.env.MY_CONTAINER.fetch(newRequest)
+})
 
 export default {
   fetch: app.fetch
-};
+}
