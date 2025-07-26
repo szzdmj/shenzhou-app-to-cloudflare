@@ -12,6 +12,12 @@
       }
     ]
   },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["MyContainer"]
+    }
+  ],
   "kv_namespaces": [
     {
       "binding": "KV",
@@ -19,12 +25,12 @@
     }
   ],
   "assets": {
-    "directory": "./src/src" // 确保 Caddyfile 在 src 目录下
+    "directory": "./src/src"  // 假设 Caddyfile 在 src 下
   },
   "containers": [
     {
-      "name": "MY_CONTAINER",           // 和 env.MY_CONTAINER 匹配
-      "class_name": "MyContainer",      // 必需和 Durable Object 类名相同
+      "name": "MY_CONTAINER",
+      "class_name": "MyContainer", // ✅ 这个是关键
       "service": "shenzhou-app",
       "image": "ghcr.io/szzdmj/shenzhou-app:latest"
     }
