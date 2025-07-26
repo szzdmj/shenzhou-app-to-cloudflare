@@ -4,6 +4,8 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-07-26",
   "workers_dev": true,
+
+  // Durable Object binding
   "durable_objects": {
     "bindings": [
       {
@@ -12,37 +14,47 @@
       }
     ]
   },
+
+  // Migration for Durable Object class
   "migrations": [
     {
       "tag": "v1",
       "new_classes": ["MyContainer"]
     }
   ],
+
+  // KV namespace
   "kv_namespaces": [
     {
       "binding": "KV",
       "id": "afdb066fcc2146c0bab30d8ca805a7fc"
     }
   ],
+
+  // Static assets (if needed)
   "assets": {
-    "directory": "./src/src" // 如果 Caddyfile 在这里
+    "directory": "./src/src"
   },
-  "containers": [
-    {
-      "name": "MY_CONTAINER",
-      "class_name": "MyContainer", // ✅ 必需添加
-      "service": "shenzhou-app",
-      "configuration": {
-        "image": "ghcr.io/szzdmj/shenzhou-app:latest"
-      },
-      "durable_objects": {
-        "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
-      },
-      "instances": 1,
-      "scheduling_policy": "default",
-      "constraints": {
-        "tier": 1
+
+  // ✅ Cloudflare Containers (correct structure)
+  "containers": {
+    "bindings": [
+      {
+        "name": "MY_CONTAINER",
+        "class_name": "MyContainer",
+        "service": "shenzhou-app",
+        "configuration": {
+          "image": "ghcr.io/szzdmj/shenzhou-app:latest"
+        },
+        "durable_objects": {
+          "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
+        },
+        "instances": 1,
+        "scheduling_policy": "default",
+        "constraints": {
+          "tier": 1
+        }
       }
-    }
-  ]
+    ]
+  }
 }
