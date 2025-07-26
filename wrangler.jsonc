@@ -19,7 +19,7 @@
     }
   ],
   "assets": {
-    "directory": "./src" // 确保 Caddyfile 在 src 目录下
+    "directory": "./src/src" // 确保 Caddyfile 在 src 目录下
   },
   "containers": [
     {
