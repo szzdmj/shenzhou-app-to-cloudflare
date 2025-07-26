@@ -5,7 +5,6 @@
   "compatibility_date": "2025-07-26",
   "workers_dev": true,
 
-  // Durable Object 绑定
   "durable_objects": {
     "bindings": [
       {
@@ -15,7 +14,6 @@
     ]
   },
 
-  // Durable Object 初始化迁移
   "migrations": [
     {
       "tag": "v1",
@@ -23,7 +21,6 @@
     }
   ],
 
-  // KV 命名空间绑定
   "kv_namespaces": [
     {
       "binding": "KV",
@@ -31,15 +28,14 @@
     }
   ],
 
-  // Worker 静态资源路径（Caddyfile 可以放这里）
   "assets": {
     "directory": "./src/src"
   },
 
-  // ✅ Cloudflare Container 配置（无 class_name）
   "containers": [
     {
       "name": "mycontainer",
+      "class_name": "MyContainer", // ✅ REQUIRED
       "service": "shenzhou-app",
       "configuration": {
         "image": "ghcr.io/szzdmj/shenzhou-app:latest"
