@@ -1,13 +1,25 @@
-import { Container } from '@cloudflare/containers';
-import { Hono } from 'hono';
+import { Hono } from 'hono'
+  
+type Env = {
+  MY_CONTAINER: DurableObjectNamespace
+  KV: KVNamespace
+}
 
-export class MyContainer extends Container {
-  async fetch(request: Request): Promise<Response> {
-    const app = new Hono();
+export class MyContainer {
+  // Durable Object class code, if needed; 可留空（让 container fetch 执行）
+}
 
-    app.get('/', (c) => c.text('Hello from Cloudflare Container!'));
-    app.get('/ping', (c) => c.json({ message: 'pong' }));
+const app = new Hono<{ Bindings: Env }>()
 
-    return app.fetch(request);
-  }
+app.get('/health', (c) => c.text('OK'))
+
+app.all('*', async (c) => {
+  const newRequest = new Request(c.req.raw, {
+    headers: c.req.raw.headers
+  })
+  return await c.env.MY_CONTAINER.fetch(newRequest)
+})
+
+export default {
+  fetch: app.fetch
 }
