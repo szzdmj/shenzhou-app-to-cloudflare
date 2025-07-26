@@ -5,6 +5,7 @@
   "compatibility_date": "2025-07-26",
   "workers_dev": true,
 
+  // Durable Object 绑定
   "durable_objects": {
     "bindings": [
       {
@@ -14,6 +15,7 @@
     ]
   },
 
+  // Durable Object 初始化迁移
   "migrations": [
     {
       "tag": "v1",
@@ -21,6 +23,7 @@
     }
   ],
 
+  // KV 命名空间绑定
   "kv_namespaces": [
     {
       "binding": "KV",
@@ -28,28 +31,27 @@
     }
   ],
 
+  // Worker 静态资源路径（Caddyfile 可以放这里）
   "assets": {
     "directory": "./src/src"
   },
 
- "containers": [
-  {
-    "class_name": "MyContainer",       // Durable Object class
-    "name": "mycontainer",             // 容器名称（推荐小写）
-    "service": "shenzhou-app",         // 任意标识用的名字
-    "configuration": {
-      "image": "ghcr.io/szzdmj/shenzhou-app:latest"
-    },
-    "durable_objects": {
-      "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
-    },
-    "instances": 1,
-    "scheduling_policy": "default",
-    "constraints": {
-      "tier": 1
+  // ✅ Cloudflare Container 配置（无 class_name）
+  "containers": [
+    {
+      "name": "mycontainer",
+      "service": "shenzhou-app",
+      "configuration": {
+        "image": "ghcr.io/szzdmj/shenzhou-app:latest"
+      },
+      "durable_objects": {
+        "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
+      },
+      "instances": 1,
+      "scheduling_policy": "default",
+      "constraints": {
+        "tier": 1
+      }
     }
-  }
-]
-
-
+  ]
 }
