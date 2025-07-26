@@ -11,12 +11,12 @@
   "assets": {
     "directory": "./src/src"  // 确保 src 目录下有需要的文件
   },
-  "containers": [
-    {
-      "name": "MY_CONTAINER",
-   　 "class_name": "ShenzhouAppContainer",
-      "service": "shenzhou-app",  // Cloudflare Container 服务名称
-      "image": "szapp.szzd.me/up/shenzhou-app:tag"  // 你的容器镜像
-    }
-  ]
+ "containers": [
+  {
+    "name": "MY_CONTAINER",
+    "class_name": "ShenzhouAppContainer",
+    "service": "shenzhou-app",
+    "image": "szapp.szzd.me/up/shenzhou-app:tag"
+  }
+]
 }
