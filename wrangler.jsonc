@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-07-26",
   "workers_dev": true,
+
   "durable_objects": {
     "bindings": [
       {
@@ -12,25 +13,25 @@
       }
     ]
   },
+
   "migrations": [
     {
       "tag": "v1",
       "new_classes": ["MyContainer"]
     }
   ],
+
   "kv_namespaces": [
     {
       "binding": "KV",
       "id": "afdb066fcc2146c0bab30d8ca805a7fc"
     }
   ],
-  "assets": {
-    "directory": "./src/src"
-  },
+
   "containers": [
     {
-      "name": "mycontainer",
       "class_name": "MyContainer",
+      "name": "mycontainer",
       "service": "shenzhou-app",
       "configuration": {
         "image": "ghcr.io/szzdmj/shenzhou-app:latest"
