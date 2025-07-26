@@ -1,17 +1,7 @@
 {
-  "name": "shenzhou-app-to-cloudflare",
+  "name": "hello-containers",
   "compatibility_date": "2025-07-26",
-
-  // 绑定容器镜像
-  "containers": [
-    {
-      "name": "hello-containers",
-      "image": "ghcr.io/szzdmj/shenzhou-app:latest",
-      "max_instances": 5
-    }
-  ],
-
-  // 可选绑定环境变量或持久化存储
+  "main": "src/index.ts",
   "durable_objects": {
     "bindings": [
       {
@@ -20,21 +10,19 @@
       }
     ]
   },
-
-  "kv_namespaces": [
+  "containers": [
     {
-      "binding": "KV",
-      "id": "afdb066fcc2146c0bab30d8ca805a7fc"
+      "binding": "MY_CONTAINER",
+      "class_name": "MyContainer",         // ← 必须有这个字段
+      "image": "./Dockerfile",             // 或者 image URL，例如 registry.cloudflare.com/xxx
+      "max_instances": 5,
+      "instance_type": "basic"
     }
   ],
   "migrations": [
     {
       "tag": "v1",
-      "new_sqlite_classes": ["MyContainer"]
+      "new_classes": ["MyContainer"]
     }
-  ],
-
-  "assets": {
-    "directory": "./src/src"
-  }
+  ]
 }
