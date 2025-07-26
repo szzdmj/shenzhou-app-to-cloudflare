@@ -25,11 +25,12 @@
     }
   ],
   "assets": {
-    "directory": "./src/src"  // 假设 Caddyfile 在 src 下
+    "directory": "./src/src" // 如果 Caddyfile 在这里
   },
   "containers": [
     {
       "name": "MY_CONTAINER",
+      "class_name": "MyContainer", // ✅ 必需添加
       "service": "shenzhou-app",
       "configuration": {
         "image": "ghcr.io/szzdmj/shenzhou-app:latest"
@@ -44,5 +45,4 @@
       }
     }
   ]
-
 }
