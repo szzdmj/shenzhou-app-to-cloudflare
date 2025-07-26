@@ -10,7 +10,7 @@
     }
   ],
   "assets": {
-    "directory": "./src/static" // 放 Caddyfile 的目录
+    "directory": "./src/src" // 放 Caddyfile 的目录
   },
   "containers": [
     {
