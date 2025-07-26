@@ -15,7 +15,7 @@
     {
       "name": "hello-containers",
       "class_name": "MyContainer",
-      "image": "szapp.szzd.me/up/shenzhou-app:tag",
+      "image": "ghcr.io/szzdmj/shenzhou-app:latest",
       "max_instances": 5
     }
   ],
