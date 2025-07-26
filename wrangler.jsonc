@@ -1,8 +1,17 @@
 {
-  "$schema": "https://developers.cloudflare.com/workers/wrangler/schema",
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "shenzhou-app-to-cloudflare",
   "main": "src/index.ts",
   "compatibility_date": "2025-07-26",
+  "workers_dev": true,
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_CONTAINER",
+        "class_name": "MyContainer"
+      }
+    ]
+  },
   "kv_namespaces": [
     {
       "binding": "KV",
@@ -10,13 +19,13 @@
     }
   ],
   "assets": {
-    "directory": "./src/src" // 放 Caddyfile 的目录
+    "directory": "./src" // 确保 Caddyfile 在 src 目录下
   },
   "containers": [
     {
-      "name": "MY_CONTAINER",         // env 里绑定名必须一致
-      "service": "shenzhou-app",      // Cloudflare Containers 服务名
-      "class_name": "MyContainer",    // Durable Object 类名
+      "name": "MY_CONTAINER",           // 和 env.MY_CONTAINER 匹配
+      "class_name": "MyContainer",      // 必需和 Durable Object 类名相同
+      "service": "shenzhou-app",
       "image": "ghcr.io/szzdmj/shenzhou-app:latest"
     }
   ]
