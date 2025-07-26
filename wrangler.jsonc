@@ -13,7 +13,8 @@
   },
   "containers": [
     {
-      "name": "shenzhou-app-to-cloudflare",  // 与 Worker 中的 env 绑定一致
+      "name": "MY_CONTAINER",
+   　 "class_name": "ShenzhouAppContainer",
       "service": "shenzhou-app",  // Cloudflare Container 服务名称
       "image": "szapp.szzd.me/up/shenzhou-app:tag"  // 你的容器镜像
     }
