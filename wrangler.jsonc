@@ -33,19 +33,22 @@
   },
 
   "containers": [
-    {
-      "name": "MY_CONTAINER",
-      "class_name": "MyContainer",
-      "service": "shenzhou-app",
-      "image": "ghcr.io/szzdmj/shenzhou-app:latest",   // ✅ 注意：顶级字段
-      "durable_objects": {
-        "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
-      },
-      "instances": 1,
-      "scheduling_policy": "default",
-      "constraints": {
-        "tier": 1
-      }
+  {
+    "name": "MY_CONTAINER",
+    "class_name": "MyContainer",
+    "service": "shenzhou-app",
+    "image": "ghcr.io/szzdmj/shenzhou-app:latest",
+    "entrypoint": {
+      "port": 8080
+    },
+    "durable_objects": {
+      "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
+    },
+    "instances": 1,
+    "scheduling_policy": "default",
+    "constraints": {
+      "tier": 1
     }
-  ]
+  }
+]
 }
