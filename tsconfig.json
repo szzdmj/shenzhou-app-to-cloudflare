@@ -1,22 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",  // This ensures files go into the 'dist' folder
-    "target": "es2021",
-    "lib": ["es2021"],
-    "jsx": "react-jsx",
-    "module": "es2022",
+    "target": "ES2022",
+    "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["./worker-configuration.d.ts"],
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "checkJs": false,
-    "noEmit": false,
-    "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true
-  },
-  "exclude": ["test"],
-  "include": ["worker-configuration.d.ts", "src/**/*.ts"]
+  }
 }
