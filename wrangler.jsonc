@@ -1,9 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "shenzhou-app-to-cloudflare",
-  "main": "src/index.ts",
+  "main": "worker.ts",
   "compatibility_date": "2025-07-26",
-  "workers_dev": true,
+  "compatibility_flags": ["nodejs_compat"],
 
   "durable_objects": {
     "bindings": [
@@ -14,36 +14,13 @@
     ]
   },
 
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_classes": ["MyContainer"]
-    }
-  ],
-
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "afdb066fcc2146c0bab30d8ca805a7fc"
-    }
-  ],
-
   "containers": [
     {
-      "class_name": "MyContainer",
       "name": "mycontainer",
-      "service": "shenzhou-app",
-      "configuration": {
-        "image": "ghcr.io/szzdmj/shenzhou-app:latest"
-      },
-      "durable_objects": {
-        "namespace_id": "043c8a61c53643d7a0d0ea59786fc7e0"
-      },
-      "instances": 1,
-      "scheduling_policy": "default",
-      "constraints": {
-        "tier": 1
-      }
+      "image": "ghcr.io/szzdmj/shenzhou-app:latest",
+      "instance_type": "dev",
+      "max_instances": 1,
+      "class_name": "MyContainer"
     }
   ]
 }
