@@ -1,4 +1,4 @@
-import { Container, getRandom } from "@cloudflare/containers";
+import { MY_CONTAINER, getRandom } from "@cloudflare/containers";
 
 export class MyContainer extends Container {
   defaultPort = 80; // Port the container is listening on
