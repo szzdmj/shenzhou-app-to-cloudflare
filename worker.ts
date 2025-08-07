@@ -1,25 +1,16 @@
-import { Hono } from 'hono';
+import { Container, getRandom } from "@cloudflare/containers";
 
-type Env = {
-  MY_CONTAINER: DurableObjectNamespace;
-};
+export class MyContainer extends Container {
+  defaultPort = 80; // Port the container is listening on
+  sleepAfter = "1m"; // Stop the instance if requests not sent for 1 minutes
+}
 
-export class MyContainer {} // 可为空实现
-
-const app = new Hono<{ Bindings: Env }>();
-
-app.get('/health', (c) => c.text('OK'));
-
-app.all('*', async (c) => {
-  const newRequest = new Request(c.req.raw, {
-    headers: c.req.raw.headers,
-    method: c.req.method,
-    body: c.req.raw.body
-  });
-
-  return await c.env.MY_CONTAINER.fetch(newRequest);
-});
+const INSTANCE_COUNT = 5;
 
 export default {
-  fetch: app.fetch
+  async fetch(request: Request, env: Env): Promise<Response> {
+  let container = await getRandom(env.SZ_CONTAINER, INSTANCE_COUNT);
+  // Pass the request to the container instance on its default port
+  return await container.fetch(request);
+  },
 };
