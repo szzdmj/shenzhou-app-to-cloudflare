@@ -3,7 +3,7 @@
   "name": "shenzhou-app-to-cloudflare",
   "main": "worker.ts", // 确保 worker.ts 放在项目根目录
   "compatibility_date": "2025-07-26",
-  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
 
   "durable_objects": {
     "bindings": [
@@ -17,9 +17,8 @@
   "containers": [
     {
       "name": "mycontainer",
-      "image": "ghcr.io/szzdmj/shenzhou-app:latest",
-      "instance_type": "dev",
-      "max_instances": 1,
+      "image": "Dockerfile",
+      "max_instances": 5,
       "class_name": "MyContainer"
     }
   ],
