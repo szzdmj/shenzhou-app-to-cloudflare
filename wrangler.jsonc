@@ -1,5 +1,5 @@
 {
-  "name": "stc",
+  "name": "shenzhou-app-to-cloudflare",
   "main": "./worker-dev.ts",
   "observability": {
 		"enabled": true
