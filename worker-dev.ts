@@ -5,7 +5,7 @@ export class SZContainer extends Container {
   sleepAfter = "1m"; // Stop the instance if requests not sent for 1 minutes
 }
 
-const INSTANCE_COUNT = 12;
+const INSTANCE_COUNT = 2;
 
 export default {
     // note: "getRandom" to be replaced with latency-aware routing in the near future
