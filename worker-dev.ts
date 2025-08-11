@@ -1,15 +1,9 @@
-import { Container, getRandom } from "@cloudflare/containers";
-
-export class SZContainer extends Container {
-  defaultPort = 80; // Port the container is listening on
-  sleepAfter = "1m"; // Stop the instance if requests not sent for 1 minutes
+class MyBackend extends Container {
+  defaultPort = 80;
+  autoscale = true; // global autoscaling on - new instances spin up when memory or CPU utilization is high
 }
 
-const INSTANCE_COUNT = 2;
-
-export default {
-    // note: "getRandom" to be replaced with latency-aware routing in the near future
-    const containerInstance = getRandom(env.BACKEND, INSTANCE_COUNT);
-    return containerInstance.fetch(request);
-  },
-};
+// routes requests to the nearest ready container and load balance globally
+async fetch(request, env) {
+  return getContainer(env.MY_BACKEND).fetch(request);
+}
