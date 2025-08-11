@@ -1,6 +1,6 @@
 {
   // Shenzhou App Cloudflare Workers 配置
-  "name": "shenzhou-app-to-cloudflare",
+　"name": "shenzhou-app-to-cloudflare",
   "compatibility_date": "2025-08-11",
   "main": "./worker-dev.ts",
   
@@ -31,16 +31,6 @@
       }
     ]
   },
-  
-  // 数据库迁移
-  "migrations": [
-    {
-      "tag": "v1", 
-      "new_sqlite_classes": [
-        "SZContainer"
-      ]
-    }
-  ],
   
   // 资源限制
   "limits": {
