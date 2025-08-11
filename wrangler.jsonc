@@ -1,6 +1,5 @@
 {
-  // Shenzhou App Cloudflare Workers 配置
-　"name": "shenzhou-app-to-cloudflare",
+  // Shenzhou App Cloudflare Workers 配置 "name": "shenzhou-app-to-cloudflare",
   "compatibility_date": "2025-08-11",
   "main": "./worker-dev.ts",
   
