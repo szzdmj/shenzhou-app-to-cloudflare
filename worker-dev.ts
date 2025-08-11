@@ -1,4 +1,4 @@
-import { Container, getContainer } from "@cloudflare/containers";
+import { Container } from "@cloudflare/containers";
 import { Hono } from "hono";
 
 export class MyContainer extends Container {
