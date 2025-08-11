@@ -7,8 +7,8 @@
   "containers": [
     {
       "max_instances": 12,
-      "name": "sz-containers1",
-      "class_name": "MyContainer",
+      "name": "sz-containers",
+      "class_name": "SZContainer",
       "instance_type": "standard",
       "image": "./static-build-cf.Dockerfile"      
     }
@@ -21,8 +21,8 @@
   "durable_objects": {
     "bindings": [
       {
-        "name": "SZ_CONTAINER1",
-        "class_name": "MyContainer"
+        "name": "SZ_CONTAINER",
+        "class_name": "SZContainer"
       }
     ]
   },
@@ -30,7 +30,7 @@
     {
       "tag": "v1",
       "new_sqlite_classes": [
-        "MyContainer"
+        "SZContainer"
       ]
     }
   ]
