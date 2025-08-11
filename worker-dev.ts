@@ -1,4 +1,4 @@
-export class MyContainer extends Container {
+export class SZContainer extends Container {
   defaultPort = 80;
   sleepAfter = '3s';
   envVars = {
