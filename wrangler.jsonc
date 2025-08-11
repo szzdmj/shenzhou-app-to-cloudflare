@@ -16,7 +16,7 @@
       "max_instances": 2,
       "name": "sz-containers", 
       "class_name": "SZContainer",
-      "instance_type": "standard",
+      "instance_type": "basic",
       "image": "./static-build-cf.Dockerfile"
     }
   ],
