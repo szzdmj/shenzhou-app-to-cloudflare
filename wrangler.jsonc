@@ -9,11 +9,10 @@
     "enabled": true
   },
   
-  // 构建配置 - 解决 @cloudflare/containers 导入问题
+  // 构建配置
   "build": {
     "command": "npm run build",
-    "cwd": "./",
-    "external": []
+    "cwd": "./"
   },
   
   // 容器配置
@@ -66,6 +65,6 @@
   
   // 资源限制
   "limits": {
-    "cpu_time": 50
+    "cpu_ms": 50
   }
 }
