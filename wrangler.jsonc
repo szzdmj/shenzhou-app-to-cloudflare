@@ -13,7 +13,7 @@
   // 容器配置
   "containers": [
     {
-      "max_instances": 12,
+      "max_instances": 2,
       "name": "sz-containers", 
       "class_name": "SZContainer",
       "instance_type": "standard",
@@ -21,13 +21,7 @@
     }
   ],
   
-  // 开发环境配置
-  "dev": {
-    "ip": "192.145.232.37",
-    "port": 80,
-    "local_protocol": "http"
-  },
-  
+   
   // Durable Objects 绑定
   "durable_objects": {
     "bindings": [
@@ -46,16 +40,6 @@
         "SZContainer"
       ]
     }
-  ],
-  
-  // 环境变量 (如果需要)
-  "vars": {
-    // "API_KEY": "your-api-key"
-  },
-  
-  // 兼容性标志 (如果需要特定功能)
-  "compatibility_flags": [
-    // "nodejs_compat"
   ],
   
   // 资源限制
