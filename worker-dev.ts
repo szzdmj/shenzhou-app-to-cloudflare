@@ -1,9 +1,19 @@
-class MyBackend extends Container {
+export class MyContainer extends Container {
   defaultPort = 80;
-  autoscale = true; // global autoscaling on - new instances spin up when memory or CPU utilization is high
-}
+  sleepAfter = '3s';
+  envVars = {
+    MESSAGE: 'I was passed in via the container class!',
+  };
 
-// routes requests to the nearest ready container and load balance globally
-async fetch(request, env) {
-  return getContainer(env.MY_BACKEND).fetch(request);
+  override onStart() {
+    console.log('Container successfully started');
+  }
+
+  override onStop() {
+    console.log('Container successfully shut down');
+  }
+
+  override onError(error: unknown) {
+    console.log('Container error:', error);
+  }
 }
