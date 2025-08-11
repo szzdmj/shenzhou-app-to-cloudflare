@@ -1,24 +1,40 @@
 {
+  // Shenzhou App Cloudflare Workers 配置
   "name": "shenzhou-app-to-cloudflare",
-  "compatibility_date":"2025-08-11",
+  "compatibility_date": "2025-08-11",
   "main": "./worker-dev.ts",
+  
+  // 启用可观测性
   "observability": {
-		"enabled": true
-	},
+    "enabled": true
+  },
+  
+  // 构建配置 - 解决 @cloudflare/containers 导入问题
+  "build": {
+    "command": "npm run build",
+    "cwd": "./",
+    "external": []
+  },
+  
+  // 容器配置
   "containers": [
     {
       "max_instances": 12,
-      "name": "sz-containers",
+      "name": "sz-containers", 
       "class_name": "SZContainer",
       "instance_type": "standard",
-      "image": "./static-build-cf.Dockerfile"      
+      "image": "./static-build-cf.Dockerfile"
     }
   ],
+  
+  // 开发环境配置
   "dev": {
     "ip": "192.145.232.37",
     "port": 80,
     "local_protocol": "http"
   },
+  
+  // Durable Objects 绑定
   "durable_objects": {
     "bindings": [
       {
@@ -27,12 +43,29 @@
       }
     ]
   },
+  
+  // 数据库迁移
   "migrations": [
     {
-      "tag": "v1",
+      "tag": "v1", 
       "new_sqlite_classes": [
         "SZContainer"
       ]
     }
-  ]
+  ],
+  
+  // 环境变量 (如果需要)
+  "vars": {
+    // "API_KEY": "your-api-key"
+  },
+  
+  // 兼容性标志 (如果需要特定功能)
+  "compatibility_flags": [
+    // "nodejs_compat"
+  ],
+  
+  // 资源限制
+  "limits": {
+    "cpu_time": 50
+  }
 }
