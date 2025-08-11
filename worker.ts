@@ -1,38 +1,14 @@
-{
-  "name": "stc",
-  "main": "worker.ts", // 确保 worker.ts 放在项目根目录
-  "compatibility_date": "2025-07-26",
-  "observability": { 
-         "enabled": true 
-       },
-  "containers": [
-    {
-      "max_instances": 12,
-      "name": "sz-containers1",
-      "class_name": "SZContainer",
-      "instance_type": "standard",
-      "image": "./static-build-cf.Dockerfile"      
-    }
-  ],
-  "dev": {
-    "ip": "192.145.232.38",
-    "port": 80,
-    "local_protocol": "http"
-  },
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "SZ_CONTAINER",
-        "class_name": "SZContainer"
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": [
-        "SZContainer"
-      ]
-    }
-  ]
+import { Container, getRandom } from "@cloudflare/containers";
+
+export class SZContainer extends Container {
+  defaultPort = 80; // Port the container is listening on
+  sleepAfter = "1m"; // Stop the instance if requests not sent for 1 minutes
 }
+
+const INSTANCE_COUNT = 12;
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+  return await this.containerFetch(request, 80);
+  },
+};
