@@ -1,4 +1,4 @@
-import { Container, getContainer } from "@cloudflare/containers";
+import { Container, getRandom } from "@cloudflare/containers";
 
 export class SZContainer extends Container {
   defaultPort = 80; // Port the container is listening on
@@ -8,7 +8,8 @@ export class SZContainer extends Container {
 const INSTANCE_COUNT = 12;
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-  return await this.containerFetch(request, 80);
+    // note: "getRandom" to be replaced with latency-aware routing in the near future
+    const containerInstance = getRandom(env.BACKEND, INSTANCE_COUNT)
+    return containerInstance.fetch(request);
   },
 };
