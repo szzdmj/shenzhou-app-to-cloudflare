@@ -35,4 +35,14 @@
   "limits": {
     "cpu_ms": 50
   }
+},
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "SZContainer"
+      ]
+    }
+  ]
 }
+
