@@ -1,5 +1,6 @@
 {
   "name": "shenzhou-app-to-cloudflare",
+  "compatibility_date":"2025-08-11",
   "main": "./worker-dev.ts",
   "observability": {
 		"enabled": true
