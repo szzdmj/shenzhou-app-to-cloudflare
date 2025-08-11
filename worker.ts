@@ -1,5 +1,5 @@
 {
-  "name": "shenzhou-app-to-cloudflare",
+  "name": "stc",
   "main": "worker.ts", // 确保 worker.ts 放在项目根目录
   "compatibility_date": "2025-07-26",
   "observability": { 
