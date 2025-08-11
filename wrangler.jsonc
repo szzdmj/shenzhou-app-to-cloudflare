@@ -17,7 +17,7 @@
     "ip": "192.145.232.38",
     "port": 80,
     "local_protocol": "http"
-
+  },
   "durable_objects": {
     "bindings": [
       {
