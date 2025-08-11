@@ -1,4 +1,4 @@
-import { Container } from "@cloudflare/containers";
+const { Container } = require('@cloudflare/containers');
 
 export class SZContainer extends Container {
   defaultPort = 80; // Port the container is listening on
