@@ -9,11 +9,6 @@
     "enabled": true
   },
   
-  // 构建配置
-  "build": {
-    "command": "npm run build",
-    "cwd": "./"
-  },
   
   // 容器配置
   "containers": [
