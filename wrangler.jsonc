@@ -1,5 +1,4 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "shenzhou-app-to-cloudflare",
   "main": "worker.ts", // 确保 worker.ts 放在项目根目录
   "compatibility_date": "2025-07-26",
