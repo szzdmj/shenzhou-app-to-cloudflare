@@ -9,7 +9,7 @@ const INSTANCE_COUNT = 12;
 
 export default {
     // note: "getRandom" to be replaced with latency-aware routing in the near future
-    const containerInstance = getRandom(env.BACKEND, INSTANCE_COUNT)
+    const containerInstance = getRandom(env.BACKEND, INSTANCE_COUNT);
     return containerInstance.fetch(request);
   },
 };
