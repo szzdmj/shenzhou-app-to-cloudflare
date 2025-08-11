@@ -1,9 +1,3 @@
-module.exports = {
-  // ... other webpack configurations
-  externals: {
-    '@cloudflare/containers': 'commonjs @cloudflare/containers', // or 'umd', 'amd', etc. depending on your needs
-  },
-};
 import { Container, getRandom } from "@cloudflare/containers";
 
 export class SZContainer extends Container {
