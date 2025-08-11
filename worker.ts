@@ -1,5 +1,6 @@
 try {
-            const containers = require('@cloudflare/containers');
+          import { Container, getRandom } from "@cloudflare/containers";
+
             // Use containers here
         } catch (error) {
             console.warn("Could not load @cloudflare/containers:", error);
