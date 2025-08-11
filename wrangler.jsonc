@@ -4,29 +4,34 @@
   "main": "worker.ts", // 确保 worker.ts 放在项目根目录
   "compatibility_date": "2025-07-26",
   "observability": { "enabled": true },
+  "containers": [
+    {
+      "max_instances": 12,
+      "name": "sz-containers1",
+      "class_name": "MyContainer",
+      "instance_type": "standard",
+      "image": "./static-build-cf.Dockerfile"      
+    }
+  ],
+  "dev": {
+    "ip": "192.145.232.38",
+    "port": 80,
+    "local_protocol": "http"
 
   "durable_objects": {
     "bindings": [
       {
-        "name": "MY_CONTAINER",
+        "name": "SZ_CONTAINER1",
         "class_name": "MyContainer"
       }
     ]
   },
-
-  "containers": [
-    {
-      "name": "mycontainer",
-      "image": "Dockerfile",
-      "max_instances": 5,
-      "class_name": "MyContainer"
-    }
-  ],
-
   "migrations": [
     {
       "tag": "v1",
-      "new_classes": ["MyContainer"]
+      "new_sqlite_classes": [
+        "MyContainer"
+      ]
     }
   ]
 }
