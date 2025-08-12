@@ -1,6 +1,5 @@
 {
   "name": "shenzhou-app-to-cloudflare",
-  "type": "javascript",
   "compatibility_date": "2025-08-12",
   "main": "./worker-dev.ts",
   "build": {
@@ -8,7 +7,7 @@
   },
     "env": {
     "production": {
-      "workers_dev": true
+      "script_name": "sz-containers-worker"  // 如果使用 Durable Objects
     }
   },
 
@@ -34,7 +33,16 @@
       }
     ]
   },
-  
+  export class SZContainer {
+  // Durable Object 的实现
+}
+
+export default {
+  async fetch(request: Request) {
+    // 处理请求的逻辑
+    return new Response("Hello from Cloudflare Worker!", {
+      headers: { "content-type": "text/plain" },
+    });
   // 资源限制
   "limits": {
     "cpu_ms": 50
