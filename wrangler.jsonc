@@ -29,9 +29,6 @@
       }
     ]
   },
-  export class SZContainer {
-  // Durable Object 的实现
-}
 
 export default {
   async fetch(request: Request) {
