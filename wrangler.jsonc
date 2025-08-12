@@ -1,10 +1,6 @@
 {
   "name": "shenzhou-app-to-cloudflare",
   "compatibility_date": "2025-08-12",
-  "main": "./worker-dev.ts",
-  "build": {
-    "external": ["@cloudflare/containers"]
-  },
     "env": {
     "production": {
       "script_name": "sz-containers-worker"  // 如果使用 Durable Objects
