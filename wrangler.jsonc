@@ -2,7 +2,7 @@
   "name": "shenzhou-app-to-cloudflare",
   "type": "javascript",
   "compatibility_date": "2025-08-12",
-　"main": "./worker-dev.ts",
+  "main": "./worker-dev.ts",
   "build": {
     "external": ["@cloudflare/containers"]
   },
