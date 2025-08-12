@@ -1,14 +1,16 @@
 {
-  // Shenzhou App Cloudflare Workers 配置 
-  "name": "sz-containers-worker",
-  "compatibility_date": "2025-08-11",
-  "main": "./worker-dev.ts",
-  
-  // 启用可观测性
-  "observability": {
-    "enabled": true
+  "name": "shenzhou-app-to-cloudflare",
+  "type": "javascript",
+  "compatibility_date": "2025-08-12",
+  "build": {
+    "external": ["@cloudflare/containers"]
   },
-  
+    "env": {
+    "production": {
+      "workers_dev": true
+    }
+  },
+
   
   // 容器配置
   "containers": [
@@ -45,4 +47,3 @@
     }
   ]
 }
-
