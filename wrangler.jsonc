@@ -1,5 +1,5 @@
 {
-  "name": "sz-containers-worker",
+  "name": "shenzhou-app-to-cloudflare",
   "compatibility_date": "2025-08-13",
   "main": "./worker-dev.ts",
   "observability": {
