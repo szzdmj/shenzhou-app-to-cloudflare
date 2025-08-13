@@ -1,12 +1,15 @@
-import { Container } from "@cloudflare/containers";
+import { Container, getRandom } from "@cloudflare/containers";
 
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request));
-});
-
-async function handleRequest(request: Request): Promise<Response> {
-  // 处理请求的逻辑
-  return new Response("Hello from Cloudflare Worker!", {
-    headers: { "content-type": "text/plain" },
-  });
+export class SZContainer extends Container {
+  defaultPort = 80; // Port the container is listening on
+  sleepAfter = "3m"; // Stop the instance if requests not sent for 3 minutes
 }
+const INSTANCE_COUNT = 6;
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+  let container = await getRandom(env.SZ_CONTAINER, INSTANCE_COUNT);
+  // Pass the request to the container instance on its default port
+  return await container.fetch(request);
+  },
+};
