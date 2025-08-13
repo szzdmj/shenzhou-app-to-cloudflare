@@ -1,14 +1,11 @@
 {	frankenphp {
-        num_threads 30
+        num_threads 300
         }
   auto_https disable_redirects
 }
 
 # 网站根目录（根据需要调整路径）
 :80 {
-	# 统计标识(用js结合php实现的传递)
-	request_header HTTP_X_USING_HTACCESS 1
-	request_header HTTP_X_USING_FRANKENPHP 1
 	# 启用压缩
 	encode zstd gzip
 
