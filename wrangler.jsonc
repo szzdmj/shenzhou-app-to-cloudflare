@@ -1,20 +1,19 @@
 {
-  "name": "shenzhou-app-to-cloudflare",
-  "compatibility_date": "2025-08-12",
-    "env": {
-    "production": {
-      "script_name": "sz-containers-worker"  // 如果使用 Durable Objects
-    }
+  "name": "sz-containers-worker",
+  "compatibility_date": "2025-08-13",
+  "main": "./worker-dev.ts",
+  "observability": {
+	"enabled": true
   },
 
   
   // 容器配置
   "containers": [
     {
-      "max_instances": 2,
+      "max_instances": 6,
       "name": "sz-containers", 
       "class_name": "SZContainer",
-      "instance_type": "basic",
+      "instance_type": "standard",
       "image": "./static-build-cf.Dockerfile"
     }
   ],
@@ -24,21 +23,10 @@
   "durable_objects": {
     "bindings": [
       {
-        "name": "sz-containers",
+        "name": "SZ_CONTAINER",
         "class_name": "SZContainer"
       }
     ]
-  },
-
-export default {
-  async fetch(request: Request) {
-    // 处理请求的逻辑
-    return new Response("Hello from Cloudflare Worker!", {
-      headers: { "content-type": "text/plain" },
-    });
-  // 资源限制
-  "limits": {
-    "cpu_ms": 50
   },
   "migrations": [
     {
